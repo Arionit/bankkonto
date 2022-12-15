@@ -1,0 +1,51 @@
+int Kapital = 1000;
+bool ende = false;
+
+while (ende == false)
+{
+    Console.Write("Was möchten Sie tun? \n(1)Kapital überprüfen \n(2)Geld abheben \n(3)Geld Einzahlen \n(4)Programm beenden \nEingabe: ");
+
+    try
+    {
+        int Eingabe = Int32.Parse(Console.ReadLine());
+
+        if (Eingabe == 1)
+        {
+            Console.WriteLine("Ihr Kapital beträgt {0} Euro! \n", Kapital);
+        }
+        else if (Eingabe == 2)
+        {
+            Console.Write("Wieviel wollen Sie abheben? Abheben ist nur in 10er Schritten möglich! ");
+            int abheben = Int32.Parse(Console.ReadLine());
+            if (abheben % 10 == 0)
+            {
+                Kapital = Kapital - abheben;
+                Console.WriteLine("Es wurde ein Betrag von {0} Euro abgehoben. Ihr neues Saldo beträgt {1} Euro. \n", abheben, Kapital);
+            }
+            else
+            {
+                Console.WriteLine("Ungültiger Betrag, nur in 10er Schritte! \n");
+            }
+        }
+        else if (Eingabe == 3)
+        {
+            Console.Write("Wieviel möchten sie einzahlen? \nEingabe: ");
+            int einzahlbetrag = Int32.Parse(Console.ReadLine());
+            Kapital = Kapital + einzahlbetrag;
+            Console.WriteLine("Es wurde ein Betrag von {0} Euro eingezahlt. Ihr neues Saldo beträgt {1} Euro. \n", Kapital, Kapital);
+        }
+        else if (Eingabe == 4)
+        {
+            Console.WriteLine("\nProgramm wurde beendet\n");
+            ende = true;
+        }
+        else
+        {
+            Console.WriteLine("\nEs gibt nur die Auswahlmöglichkeiten 1/2/3/4 \n");
+        }
+    }
+    catch
+    {
+        Console.WriteLine("\nEin Fehler ist aufgetreten. Überprüfen Sie die Eingabe!\n");
+    }
+}
